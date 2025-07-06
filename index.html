@@ -53,13 +53,13 @@
             border-color: #6366f1; /* Indigo */
         }
         .primary-btn {
-            background: linear-gradient(45deg, #4f46e5, #818cf8);
+            background: linear-gradient(45deg, #6366f1, #a855f7); /* Indigo to Purple */
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
         }
         .primary-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
         }
         /* MODIFIED: Updated result page background colors */
         .result-bg-A { background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%); } /* Black/Grey */
@@ -76,11 +76,11 @@
 
             <!-- MODIFIED: Start Screen with the correct raw GitHub image URL -->
             <div id="start-screen" class="w-full max-w-xl mx-auto rounded-3xl shadow-2xl shadow-indigo-100 overflow-hidden flex flex-col justify-end items-center fade-in-up" 
-                 style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic.png'); background-size: cover; background-position: center; height: 80vh; max-height: 700px;">
+                 style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/phone.png'); background-size: cover; background-position: center; height: 80vh; max-height: 700px;">
                 
                 <div class="p-8 w-full">
                     <button onclick="startQuiz()" class="w-full bg-white text-indigo-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-slate-200 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                        立即開始測驗
+                        開始測驗
                     </button>
                 </div>
             </div>
@@ -203,12 +203,12 @@
             }
         ];
 
-        // MODIFIED: Corrected all image URLs to use the raw GitHub content link.
+        // MODIFIED: Reverted result images to the state before the last change.
         const results = {
-            'A': { title: "Galaxy Fold7", prototype: "運籌帷幄的「開創者」", description: "你追求極致效率，是天生的多工處理大師。Galaxy Fold7 的沉浸式大螢幕與超薄機身，讓你隨時隨地都能展開強大生產力，完美契合你的商務精英本色。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic/A.png", bgClass: "result-bg-A" },
-            'B': { title: "Galaxy Flip7", prototype: "引領潮流的「風格家」", description: "你是自帶光芒的時尚焦點，對美感有著敏銳直覺。Galaxy Flip7 的精巧設計與強大封面螢幕，讓你無需展開手機即可快速自拍，輕鬆定義屬於你的獨特風格。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic/B.png", bgClass: "result-bg-B" },
-            'C': { title: "Galaxy S25 Ultra", prototype: "追求極致的「創造家」", description: "你對細節有著近乎偏執的追求，渴望捕捉每個不容錯過的瞬間。Galaxy S25 Ultra 是你的演唱會神器，憑藉其無可匹敵的超強遠拍功能，再遠的舞台都是你的搖滾區。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic/C.png", bgClass: "result-bg-C" },
-            'D': { title: "Galaxy S25 Edge", prototype: "聰明生活的「全能者」", description: "你務實、聰明且懂得平衡，總能找到最高效的生活方式。Galaxy S25 Edge 的輕巧機身與全方位 AI 功能，是你探索生活的最佳夥伴，讓一切都變得輕鬆又簡單。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic/D.png", bgClass: "result-bg-D" }
+            'A': { title: "Galaxy Fold7", prototype: "運籌帷幄的「開創者」", description: "你追求極致效率，是天生的多工處理大師。Galaxy Fold7 的沉浸式大螢幕與超薄機身，讓你隨時隨地都能展開強大生產力，完美契合你的商務精英本色。", image: "https://placehold.co/600x600/a8b2ff/1f2937?text=Z+Fold7+圖片", bgClass: "result-bg-A" },
+            'B': { title: "Galaxy Flip7", prototype: "引領潮流的「風格家」", description: "你是自帶光芒的時尚焦點，對美感有著敏銳直覺。Galaxy Flip7 的精巧設計與強大封面螢幕，讓你無需展開手機即可快速自拍，輕鬆定義屬於你的獨特風格。", image: "https://placehold.co/600x600/fbc2eb/1f2937?text=Z+Flip7+圖片", bgClass: "result-bg-B" },
+            'C': { title: "Galaxy S25 Ultra", prototype: "追求極致的「創造家」", description: "你對細節有著近乎偏執的追求，渴望捕捉每個不容錯過的瞬間。Galaxy S25 Ultra 是你的演唱會神器，憑藉其無可匹敵的超強遠拍功能，再遠的舞台都是你的搖滾區。", image: "https://images.samsung.com/is/image/samsung/p6pim/tw/2501/gallery/tw-galaxy-s25-s938-sm-s9380zbwbri-544716806?imbypass=true", bgClass: "result-bg-C" },
+            'D': { title: "Galaxy S25 Edge", prototype: "聰明生活的「全能者」", description: "你務實、聰明且懂得平衡，總能找到最高效的生活方式。Galaxy S25 Edge 的輕巧機身與全方位 AI 功能，是你探索生活的最佳夥伴，讓一切都變得輕鬆又簡單。", image: "https://images.samsung.com/is/image/samsung/p6pim/tw/ps_2504/gallery/tw-galaxy-s25-s937-sm-s9370zsgbri-546491970?imbypass=true", bgClass: "result-bg-D" }
         };
 
         let currentQuestionIndex = 0;
@@ -347,7 +347,8 @@
                 const type = result[0];
                 if(results[type]) {
                     const button = document.createElement('button');
-                    button.className = 'w-full text-center p-4 bg-indigo-600 text-white rounded-full option-btn text-lg font-bold hover:bg-indigo-700 primary-btn';
+                    // MODIFIED: This button now uses the new primary-btn style
+                    button.className = 'w-full text-center p-4 text-white rounded-full option-btn text-lg font-bold primary-btn';
                     button.textContent = `我更像是：${results[type].prototype}`;
                     button.onclick = () => showResult(type);
                     tiebreakerOptionsEl.appendChild(button);
