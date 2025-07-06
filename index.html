@@ -77,7 +77,7 @@
             transform: translateX(-50%);
             display: flex;
             justify-content: center; /* Center the button */
-            bottom: 26%; /* Adjusted mobile bottom position */
+            bottom: 38%; /* MODIFIED: Moved button higher on mobile */
         }
 
         #start-button {
@@ -93,7 +93,7 @@
         /* Desktop: Override to the original lower position and remove animation */
         @media (min-width: 768px) {
             #start-button-container {
-                bottom: 4rem; /* MODIFIED: Moved the button further down on desktop */
+                bottom: 4rem; /* Desktop button position remains lower */
             }
             #start-button {
                 max-width: 320px; /* Original desktop max-width */
@@ -149,7 +149,6 @@
                         <p id="result-title" class="text-xl font-bold mt-2 text-indigo-700"></p>
                     </div>
                     <div class="px-8 flex justify-center">
-                        <!-- MODIFIED: Reduced negative margin to prevent cropping -->
                         <img id="result-image" src="" alt="手機圖片" class="w-auto h-60 md:h-64 object-contain drop-shadow-2xl -mb-4">
                     </div>
                     <div class="bg-white/50 backdrop-blur-lg p-8 pt-12">
