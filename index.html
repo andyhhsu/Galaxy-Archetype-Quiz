@@ -74,12 +74,12 @@
     <div class="flex items-center justify-center min-h-screen p-4">
         <div id="quiz-app" class="w-full max-w-xl mx-auto">
 
-            <!-- MODIFIED: Start Screen with the correct raw GitHub image URL -->
-            <div id="start-screen" class="w-full max-w-xl mx-auto rounded-3xl shadow-2xl shadow-indigo-100 overflow-hidden flex flex-col justify-end items-center fade-in-up" 
+            <!-- MODIFIED: Start Screen with styled and repositioned button -->
+            <div id="start-screen" class="relative w-full max-w-xl mx-auto rounded-3xl shadow-2xl shadow-indigo-100 overflow-hidden fade-in-up" 
                  style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/phone.png'); background-size: cover; background-position: center; height: 80vh; max-height: 700px;">
                 
-                <div class="p-8 w-full">
-                    <button onclick="startQuiz()" class="w-full bg-white text-indigo-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-slate-200 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-full px-8">
+                    <button onclick="startQuiz()" class="w-full primary-btn text-white font-bold py-4 px-8 rounded-full text-lg">
                         開始測驗
                     </button>
                 </div>
