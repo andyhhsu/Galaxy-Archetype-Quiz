@@ -66,6 +66,40 @@
         .result-bg-B { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
         .result-bg-C { background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); } /* Light Blue */
         .result-bg-D { background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%); } /* Silver */
+
+        /* MODIFIED: CSS for responsive button positioning and animation */
+        #start-button-container {
+            position: absolute;
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center; /* Center the button */
+            bottom: 26%; /* Adjusted mobile bottom position */
+        }
+
+        #start-button {
+            max-width: 160px; /* Further reduced max-width for mobile */
+            animation: pulse 1.5s infinite alternate; /* Add pulse animation for mobile */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Desktop: Override to the original lower position and remove animation */
+        @media (min-width: 768px) {
+            #start-button-container {
+                bottom: 16rem; /* Original desktop bottom position */
+            }
+            #start-button {
+                max-width: 320px; /* Original desktop max-width */
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body class="relative">
@@ -74,18 +108,16 @@
     <div class="flex items-center justify-center min-h-screen p-4">
         <div id="quiz-app" class="w-full max-w-xl mx-auto">
 
-            <!-- MODIFIED: Start Screen with responsive button positioning and size -->
-            <div id="start-screen" class="relative w-full max-w-xl mx-auto rounded-3xl shadow-2xl shadow-indigo-100 overflow-hidden fade-in-up" 
+            <div id="start-screen" class="relative w-full max-w-xl mx-auto rounded-3xl shadow-2xl shadow-indigo-100 overflow-hidden fade-in-up"
                  style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/phone.png'); background-size: cover; background-position: center; height: 80vh; max-height: 700px;">
-                
-                <div class="absolute bottom-[28%] md:bottom-16 w-full px-8 flex justify-center">
-                    <button onclick="startQuiz()" class="w-full max-w-64 md:max-w-xs primary-btn text-white font-bold py-4 px-8 rounded-full text-lg">
+
+                <div id="start-button-container">
+                    <button id="start-button" onclick="startQuiz()" class="primary-btn text-white font-bold py-4 px-8 rounded-full text-lg">
                         開始測驗
                     </button>
                 </div>
             </div>
 
-            <!-- Quiz Screen -->
             <div id="quiz-screen" style="display: none;">
                  <div class="bg-white rounded-3xl shadow-2xl shadow-indigo-100 p-6 md:p-8 min-h-[550px] flex flex-col">
                     <div class="flex-shrink-0">
@@ -100,8 +132,7 @@
                     <div id="options-container" class="space-y-4 flex-grow flex flex-col justify-center"></div>
                 </div>
             </div>
-            
-            <!-- Tie-breaker Screen -->
+
             <div id="tiebreaker-screen" style="display: none;">
                  <div class="bg-white rounded-3xl shadow-2xl shadow-indigo-100 p-6 md:p-8 text-center min-h-[550px] flex flex-col justify-center items-center">
                     <h2 class="text-2xl font-bold text-slate-800">最後一步！</h2>
@@ -110,7 +141,6 @@
                 </div>
             </div>
 
-            <!-- Result Screen -->
             <div id="result-screen" style="display: none;">
                 <div id="result-card-content" class="rounded-3xl shadow-2xl shadow-indigo-200 overflow-hidden">
                     <div class="p-8 text-center">
@@ -119,7 +149,6 @@
                         <p id="result-title" class="text-xl font-bold mt-2 text-indigo-700"></p>
                     </div>
                     <div class="px-8 flex justify-center">
-                        <!-- This image's src will be dynamically changed by JavaScript -->
                         <img id="result-image" src="" alt="手機圖片" class="w-auto h-60 md:h-64 object-contain drop-shadow-2xl -mb-8">
                     </div>
                     <div class="bg-white/50 backdrop-blur-lg p-8 pt-12">
@@ -132,19 +161,18 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mt-6 text-center">
                     <button onclick="restartQuiz()" class="w-full max-w-xs mx-auto bg-white text-indigo-600 font-bold py-3 px-8 rounded-full hover:bg-slate-200 transition-colors duration-300 shadow-lg">
                         再測一次
                     </button>
                 </div>
 
-                <!-- Promotion block -->
                 <div id="new-promotion-block" class="mt-6 bg-white/80 backdrop-blur-xl border-2 border-dashed border-teal-400 rounded-2xl p-6 text-center shadow-lg">
                     <h3 class="text-2xl font-bold text-teal-600">🎉 同場加映：填問卷抽好禮！🎉</h3>
                     <p class="mt-2 text-slate-700 font-semibold">即日起至 2025/7/24，完成新機預熱問卷，就有機會抽中 Galaxy Fit3、無線閃充充電板等精美好禮！</p>
-                    <a href="https://www.de-hm.com/20/262?test_code=cd488486048b79ebb40b59da53f18a06f8f2063868b6d7998e8ad29c33b0e7b0&test_expired=1751096985" 
-                       target="_blank" 
+                    <a href="https://www.de-hm.com/20/262?test_code=cd488486048b79ebb40b59da53f18a06f8f2063868b6d7998e8ad29c33b0e7b0&test_expired=1751096985"
+                       target="_blank"
                        onclick="trackSurveyClick()"
                        class="mt-4 inline-block bg-teal-500 text-white font-bold py-3 px-8 rounded-full text-base hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 shadow-md">
                         前往問卷抽大獎
@@ -153,7 +181,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         const quizData = [
             {
