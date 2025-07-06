@@ -7,7 +7,7 @@
     
     <!-- START: GA4 Global Site Tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-631RLVDD3T"></script>
-    <script>#start-button-container
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -81,7 +81,10 @@
         }
 
         #start-button {
-            max-width: 130px; /* MODIFIED: Reduced button size for mobile */
+            max-width: 104px; /* MODIFIED: Reduced button size by ~20% for mobile */
+            padding: 0.75rem 1rem; /* Adjusted padding to fit smaller size */
+            font-size: 1rem; /* Slightly smaller font for mobile button */
+            white-space: nowrap; /* Ensures text stays on one line */
             animation: pulse 1.5s infinite alternate; /* Add pulse animation for mobile */
         }
 
@@ -97,6 +100,8 @@
             }
             #start-button {
                 max-width: 320px; /* Original desktop max-width */
+                padding: 1rem 2rem; /* Restore original padding */
+                font-size: 1.125rem; /* Restore original font size */
                 animation: none;
             }
         }
@@ -112,7 +117,7 @@
                  style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/phone.png'); background-size: cover; background-position: center; height: 80vh; max-height: 700px;">
 
                 <div id="start-button-container">
-                    <button id="start-button" onclick="startQuiz()" class="primary-btn text-white font-bold py-4 px-8 rounded-full text-lg">
+                    <button id="start-button" onclick="startQuiz()" class="primary-btn text-white font-bold rounded-full">
                         開始測驗
                     </button>
                 </div>
