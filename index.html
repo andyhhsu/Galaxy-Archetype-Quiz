@@ -114,7 +114,7 @@
         /* NEW: Override for large portrait screens like digital signage */
         @media (min-width: 768px) and (orientation: portrait) {
             #start-button-container {
-                bottom: 45%; /* MODIFIED: Moved button higher for signage */
+                bottom: 28%; /* MODIFIED: Moved button lower for signage */
             }
             #start-button {
                 max-width: 325px; /* 130px * 2.5 = 325px */
@@ -122,7 +122,6 @@
                 font-size: 1.5rem; /* Increase font size */
                 animation: none; /* Disable pulse on large screens */
             }
-            /* NEW: Adjust quiz content position for signage */
             #quiz-content-wrapper {
                 align-items: flex-start;
                 padding-top: 15vh;
@@ -170,7 +169,7 @@
             </div>
         </div>
 
-        <div id="quiz-content-wrapper" class="hidden flex items-center justify-center min-h-screen p-4">
+        <div id="quiz-content-wrapper" class="hidden p-4">
             <div class="w-full max-w-xl mx-auto">
                 <div id="quiz-screen" style="display: none;">
                      <div class="bg-white rounded-3xl shadow-2xl shadow-indigo-100 p-6 md:p-8 min-h-[550px] flex flex-col">
