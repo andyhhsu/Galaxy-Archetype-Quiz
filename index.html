@@ -98,7 +98,8 @@
             100% { transform: scale(1.05); }
         }
 
-        @media (min-width: 768px) {
+        /* MODIFIED: Added (orientation: landscape) to target only desktop-like screens */
+        @media (min-width: 768px) and (orientation: landscape) {
             #start-button-container {
                 bottom: 4rem; 
             }
@@ -142,7 +143,7 @@
     <div id="quiz-app" class="w-full">
 
         <div id="start-screen" class="relative w-full h-screen fade-in-up flex flex-col justify-center items-center"
-             style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic2.png'); background-size: cover; background-position: center;">
+             style="background-image: url('https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/phone.png'); background-size: cover; background-position: center;">
 
             <div id="start-button-container">
                 <button id="start-button" onclick="startQuiz()" class="primary-btn text-white font-bold rounded-full">
@@ -189,7 +190,7 @@
                         <div class="bg-white/50 backdrop-blur-lg p-8 pt-12">
                             <p id="result-description" class="text-base text-gray-800 leading-relaxed text-center"></p>
                              <div class="mt-8 bg-gradient-to-br from-indigo-100 to-purple-100 border-2 border-dashed border-indigo-400 rounded-2xl p-5 coupon-animate">
-                                <h3 class="text-xl font-bold text-center text-indigo-800">🎁 已解鎖：專屬線下好禮</h3>
+                                <h3 class="text-xl font-bold text-center text-indigo-800">🎁 已解鎖：專屬線下好禮 </h3>
                                 <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
                                     <div class="flex-shrink-0">
                                         <img src="https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/000001_1669964223-removebg-preview.png" alt="7-ELEVEN 現萃茶" class="w-36 h-36 md:w-48 md:h-48 object-contain">
@@ -232,7 +233,7 @@
                            target="_blank"
                            onclick="trackSurveyClick()"
                            class="mt-4 inline-block bg-teal-500 text-white font-bold py-3 px-8 rounded-full text-base hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 shadow-md">
-                            前往抽大獎
+                            點我抽大獎！
                         </a>
                     </div>
                 </div>
