@@ -114,13 +114,13 @@
         /* NEW: Override for large portrait screens like digital signage */
         @media (min-width: 768px) and (orientation: portrait) {
             #start-button-container {
-                bottom: 28%; /* MODIFIED: Moved button lower for signage */
+                bottom: 28%; 
             }
             #start-button {
-                max-width: 325px; /* 130px * 2.5 = 325px */
-                padding: 1.5rem 3rem; /* Increase padding for a larger button */
-                font-size: 1.5rem; /* Increase font size */
-                animation: none; /* Disable pulse on large screens */
+                max-width: 325px; 
+                padding: 1.5rem 3rem; 
+                font-size: 1.5rem; 
+                animation: none; 
             }
             #quiz-content-wrapper {
                 align-items: flex-start;
@@ -370,12 +370,53 @@
 
 
         // --- Quiz Logic ---
+        // MODIFIED: quizData is updated with the latest "少女風格版" options
         const quizData = [
-            { question: "一個完美的週末午後，你會選擇如何度過？", options: [ { text: "找間有質感的咖啡廳，從容地處理完下週的待辦事項，享受一切盡在掌握的成就感。", type: 'A' }, { text: "跟閨密約好 dress code，在最熱門的打卡點，捕捉彼此最上鏡的瞬間。", type: 'B' }, { text: "為了不錯過偶像的每個表情，就算位置再遠，也要記錄下最珍貴的舞台瞬間。", type: 'C' }, { text: "一趟說走就走的城市漫遊，隨性鑽進陌生巷弄，享受無障礙探索的樂趣。", type: 'D' } ] },
-            { question: "當你規劃一場旅行時，你更偏好像…", options: [ { text: "行程表塞滿，公事和玩樂無縫切換，每一分鐘都要淋漓盡致。", type: 'A' }, { text: "精心規劃每一天的穿搭，因為旅途中的每個角落，都是我的伸展台。", type: 'B' }, { text: "把大部分預算都花在「體驗」上，例如演唱會 VIP 區或國家公園的特殊導覽。", type: 'C' }, { text: "只訂好機票住宿，剩下的交給心情決定，相信總會有意想不到的驚喜。", type: 'D' } ] },
-            { question: "在社群媒體上，你最傾向分享哪種內容？", options: [ { text: "富有洞見的產業趨勢分析，或是能展現專業形象的內容。", type: 'A' }, { text: "精心調色過的生活美學照片，每一張都代表著我的個人品味。", type: 'B' }, { text: "一張千載難逢的奇景照，例如稍縱即逝的流星雨或野生動物。", type: 'C' }, { text: "各種實用資訊或讓生活更便利的聰明小技巧。", type: 'D' } ] },
-            { question: "選購一件新的科技產品時，哪個特點最讓你心動？", options: [ { text: "能徹底顛覆我的工作流程，提供前所未有的生產力。", type: 'A' }, { text: "設計是否獨特、時尚，能否成為我個人風格的延伸。", type: 'B' }, { text: "是否擁有最頂級的專業性能，能滿足我對完美的偏執。", type: 'C' }, { text: "能否無縫融入我的生活，讓一切都變得更聰明、更簡單。", type: 'D' } ] },
-            { question: "如果可以用一種方式形容你的生活哲學，那會是？", options: [ { text: "「時間就是金錢」—— 我總是在思考如何最大化每一分鐘的價值。", type: 'A' }, { text: "「生活要有儀式感」—— 我享受在平凡日常中創造屬於自己的閃亮時刻。", type: 'B' }, { text: "「追求極致，近乎偏執」—— 對於我熱愛的事物，99分都不能算是及格。", type: 'C' }, { text: "「聰明工作，而不是辛苦工作」—— 我總能找到最高效省力的方法解決問題。", type: 'D' } ] }
+            {
+                question: "一個完美的週末午後，你會選擇如何度過？",
+                options: [
+                    { text: "事先規劃好要去哪間咖啡廳，並列出待辦清單，享受逐一完成它們的掌控感。", type: 'A' },
+                    { text: "約好姊妹去網美咖啡廳，從甜點到穿搭，每個細節都要拍成完美的 IG Story。", type: 'B' },
+                    { text: "為了不錯過偶像的每個表情，就算位置再遠，也要記錄下最珍貴的舞台瞬間。", type: 'C' },
+                    { text: "不去想太多，在家附近找個舒服的公園或小店坐坐，享受片刻的寧靜。", type: 'D' }
+                ]
+            },
+            {
+                question: "當你規劃一場旅行時，你更偏好像…",
+                options: [
+                    { text: "製作一份詳細的 Excel 行程表，將交通、住宿、景點都安排妥當，確保旅程順利。", type: 'A' },
+                    { text: "行程不重要，重要的是每個景點都要能拍出夢幻美照，我的行李箱一半都是化妝品和可愛的配件。", type: 'B' },
+                    { text: "把大部分預算都花在「體驗」上，例如演唱會 VIP 區或國家公園的特殊導覽。", type: 'C' },
+                    { text: "只訂好大方向的目的地，剩下的就隨意逛逛，喜歡就多待一會，累了就找地方休息。", type: 'D' }
+                ]
+            },
+            {
+                question: "在社群媒體上，你最傾向分享哪種內容？",
+                options: [
+                    { text: "分享經過深思熟慮後的觀點或心得，內容條理分明，讓人一目了然。", type: 'A' },
+                    { text: "分享我剛剪好的 VLOG 短片，充滿了可愛的貼圖、轉場和流行的配樂。", type: 'B' },
+                    { text: "一張千載難逢的奇景照，例如稍縱即逝的流星雨或野生動物。", type: 'C' },
+                    { text: "分享一些實用的生活小知識，或是能讓朋友會心一笑的有趣內容。", type: 'D' }
+                ]
+            },
+            {
+                question: "選購一件新的科技產品時，哪個特點最讓你心動？",
+                options: [
+                    { text: "能幫助我更有條理地整合工作與生活，成為我實現計畫的得力助手。", type: 'A' },
+                    { text: "顏色和外型是第一優先！它必須像個精緻的配件，能輕鬆放進我的小廢包裡。", type: 'B' },
+                    { text: "是否擁有最頂級的專業性能，能滿足我對完美的偏執。", type: 'C' },
+                    { text: "操作直覺、性能可靠，能順暢地完成我交代給它的每一項任務。", type: 'D' }
+                ]
+            },
+            {
+                question: "如果可以用一種方式形容你的生活哲學，那會是？",
+                options: [
+                    { text: "「凡事豫則立，不豫則廢。」—— 我喜歡為未來做好準備，享受計畫帶來的安心感。", type: 'A' },
+                    { text: "「讓自己開心，是每天最重要的事。」—— 我熱愛用漂亮的事物點綴生活，從不吝嗇寵愛自己。", type: 'B' },
+                    { text: "「追求極致，近乎偏執」—— 對於我熱愛的事物，99分都不能算是及格。", type: 'C' },
+                    { text: "「生活在於解決問題。」—— 我享受用聰明的方法，讓複雜的事情變得簡單。", type: 'D' }
+                ]
+            }
         ];
 
         const results = {
@@ -484,6 +525,7 @@
             }, 300);
         }
 
+        // MODIFIED: calculateResult function with new tie-breaker logic
         function calculateResult() {
             const counts = userAnswers.reduce((acc, answer) => {
                 acc[answer] = (acc[answer] || 0) + 1;
@@ -491,13 +533,28 @@
             }, {});
             const sortedCounts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
             
-            if (sortedCounts.length > 1 && sortedCounts[0][1] === sortedCounts[1][1]) {
-                const tiedTypes = sortedCounts.filter(entry => entry[1] === sortedCounts[0][1]).map(entry => entry[0]);
-                showTiebreaker(tiedTypes);
-            } else {
-                const finalResultType = sortedCounts[0][0];
-                showResult(finalResultType);
+            // If there's no tie, show the top result
+            if (sortedCounts.length < 2 || sortedCounts[0][1] > sortedCounts[1][1]) {
+                showResult(sortedCounts[0][0]);
+                return;
             }
+
+            // Handle ties
+            const topScore = sortedCounts[0][1];
+            const tiedTypes = sortedCounts.filter(entry => entry[1] === topScore).map(entry => entry[0]);
+
+            // Priority logic: If A or B is in the tie, they win (unless tied with each other)
+            if (tiedTypes.includes('A') && !tiedTypes.includes('B')) {
+                showResult('A');
+                return;
+            }
+            if (tiedTypes.includes('B') && !tiedTypes.includes('A')) {
+                showResult('B');
+                return;
+            }
+            
+            // If the tie is between A and B, or C and D, or more than 2 types, show the tie-breaker screen
+            showTiebreaker(tiedTypes);
         }
         
         function showTiebreaker(tiedTypes) {
