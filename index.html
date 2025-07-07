@@ -16,8 +16,6 @@
     <!-- END: GA4 Global Site Tag (gtag.js) -->
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- NEW: Tone.js for sound effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -128,22 +126,6 @@
             }
         }
 
-        #mute-btn {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            z-index: 100;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            padding: 0.75rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        #mute-btn:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-
         .coupon-animate {
             animation: coupon-pulse 3s infinite;
         }
@@ -156,10 +138,6 @@
 </head>
 <body class="relative">
     <canvas id="galaxy-background" class="galaxy-background"></canvas>
-    
-    <audio id="bg-music" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_797b549692.mp3?filename=stargazing-125324.mp3" type="audio/mpeg">
-    </audio>
 
     <div id="quiz-app" class="w-full">
 
@@ -173,7 +151,6 @@
             </div>
         </div>
 
-        <!-- MODIFIED: Changed justify-center to justify-start and added vertical padding to allow scrolling -->
         <div id="quiz-content-wrapper" class="hidden min-h-screen flex flex-col items-center justify-start p-4 py-12">
             <div class="w-full max-w-xl mx-auto">
                 <div id="quiz-screen" style="display: none;">
@@ -219,7 +196,6 @@
                                     </div>
                                     <div class="text-center md:text-left flex-grow">
                                         <p class="font-semibold">憑此結果畫面，即可兌換：</p>
-                                        <!-- MODIFIED: Responsive font size to prevent line break -->
                                         <p class="mt-1 text-2xl sm:text-3xl font-bold text-indigo-600 whitespace-nowrap">7-ELEVEN 現萃茶</p>
                                     </div>
                                 </div>
@@ -262,81 +238,10 @@
                 </div>
             </div>
         </div>
-        
-        <button id="mute-btn" onclick="toggleMute()">
-            <svg id="sound-on-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            </svg>
-            <svg id="sound-off-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l-4-4m0 4l4-4" />
-            </svg>
-        </button>
     </div>
 
     <script>
-        // --- NEW: Sound Effects Setup ---
-        let isMuted = true;
-        let soundsReady = false;
-        let clickSound, revealSound, swooshSound;
-        const bgMusic = document.getElementById('bg-music');
-
-        function setupSounds() {
-            if (soundsReady) return;
-            clickSound = new Tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.005, decay: 0.1, sustain: 0.01, release: 0.1 } }).toDestination();
-            revealSound = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.01, decay: 0.2, sustain: 0.2, release: 0.5 } }).toDestination();
-            swooshSound = new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.01, decay: 0.15, sustain: 0 } }).toDestination();
-            soundsReady = true;
-        }
-
-        function playSound(sound, note, duration) {
-            if (!isMuted && soundsReady) {
-                if (sound === swooshSound) {
-                    sound.triggerAttackRelease(duration);
-                } else {
-                    sound.triggerAttackRelease(note, duration);
-                }
-            }
-        }
-
-        const muteBtn = document.getElementById('mute-btn');
-        const soundOnIcon = document.getElementById('sound-on-icon');
-        const soundOffIcon = document.getElementById('sound-off-icon');
-
-        function toggleMute() {
-            isMuted = !isMuted;
-            soundOnIcon.classList.toggle('hidden', isMuted);
-            soundOffIcon.classList.toggle('hidden', !isMuted);
-            bgMusic.muted = isMuted;
-            
-            if (!isMuted && !soundsReady) {
-                if (Tone.context.state !== 'running') {
-                    Tone.context.resume().then(() => {
-                        setupSounds();
-                        playSound(clickSound, 'C5', '8n');
-                        bgMusic.play();
-                    });
-                }
-            } else {
-                playSound(clickSound, 'C5', '8n');
-                if (!isMuted) {
-                    bgMusic.play();
-                } else {
-                    bgMusic.pause();
-                }
-            }
-        }
-        
-        document.body.addEventListener('click', () => {
-            if (Tone.context.state !== 'running') {
-                Tone.context.resume().then(setupSounds);
-            } else {
-                setupSounds();
-            }
-        }, { once: true });
-
-
-        // --- NEW: Dynamic Background Setup ---
+        // --- Dynamic Background Setup ---
         const canvas = document.getElementById('galaxy-background');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -445,7 +350,6 @@
         }
 
         function trackSurveyClick() {
-            playSound(clickSound, 'C5', '8n');
             gtag('event', 'survey_click', { 'event_category': 'engagement', 'event_label': 'new_model_survey' });
             trackEventToSheet('survey_click');
         }
@@ -458,11 +362,6 @@
         }
 
         function startQuiz() {
-            playSound(clickSound, 'C5', '8n');
-            // MODIFIED: Play background music if not muted
-            if (!isMuted) {
-                bgMusic.play();
-            }
             gtag('event', 'quiz_start', { 'event_category': 'engagement', 'event_label': 'galaxy_archetype_quiz' });
             currentQuestionIndex = 0;
             userAnswers = [];
@@ -474,7 +373,6 @@
         }
 
         function showQuestion() {
-            playSound(swooshSound, null, '8n');
             const questionData = quizData[currentQuestionIndex];
             questionNumberEl.textContent = currentQuestionIndex + 1;
             questionTextEl.textContent = questionData.question;
@@ -493,7 +391,6 @@
         }
 
         function selectOption(type) {
-            playSound(clickSound, 'C5', '8n');
             const buttons = optionsContainerEl.querySelectorAll('button');
             buttons.forEach(btn => btn.disabled = true);
             userAnswers.push(type);
@@ -557,7 +454,6 @@
                 button.className = 'w-full text-center p-4 text-white rounded-full option-btn text-lg font-bold primary-btn';
                 button.textContent = option.text;
                 button.onclick = () => {
-                    playSound(clickSound, 'C5', '8n');
                     const finalResult = tiedTypes.find(type => option.resolves.includes(type));
                     showResult(finalResult || tiedTypes[0]);
                 };
@@ -566,7 +462,6 @@
         }
 
         function showResult(type) {
-            playSound(revealSound, 'C6', '4n');
             gtag('event', 'quiz_complete', { 'event_category': 'milestone', 'event_label': 'galaxy_archetype_quiz', 'value': type });
             trackEventToSheet('quiz_result', type);
 
@@ -605,11 +500,6 @@
         }
 
         function restartQuiz() {
-            playSound(clickSound, 'C5', '8n');
-            // MODIFIED: Play background music if not muted
-            if (!isMuted) {
-                bgMusic.play();
-            }
             resultScreen.style.display = 'none';
             quizContentWrapper.classList.add('hidden');
             startScreen.style.display = 'flex';
