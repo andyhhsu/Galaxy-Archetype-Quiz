@@ -82,7 +82,7 @@
             transform: translateX(-50%);
             display: flex;
             justify-content: center; /* Center the button */
-            bottom: 27%; 
+            bottom: 35%; 
         }
 
         #start-button {
@@ -101,7 +101,7 @@
         /* Desktop: Override for landscape screens */
         @media (min-width: 768px) and (orientation: landscape) {
             #start-button-container {
-                bottom: 4rem; 
+                bottom: 10rem; /* MODIFIED: Moved button higher on desktop */
             }
             #start-button {
                 max-width: 320px; 
@@ -114,13 +114,13 @@
         /* NEW: Override for large portrait screens like digital signage */
         @media (min-width: 768px) and (orientation: portrait) {
             #start-button-container {
-                bottom: 40%; /* MODIFIED: Moved button higher for signage */
+                bottom: 28%; 
             }
             #start-button {
-                max-width: 325px; /* 130px * 2.5 = 325px */
-                padding: 1.5rem 3rem; /* Increase padding for a larger button */
-                font-size: 1.5rem; /* Increase font size */
-                animation: none; /* Disable pulse on large screens */
+                max-width: 325px; 
+                padding: 1.5rem 3rem; 
+                font-size: 1.5rem; 
+                animation: none; 
             }
             #quiz-content-wrapper {
                 align-items: flex-start;
@@ -371,11 +371,11 @@
 
         // --- Quiz Logic ---
         const quizData = [
-            { question: "一個完美的週末午後，你會選擇如何度過？", options: [ { text: "找間有質感的咖啡廳，從容地處理完下週的待辦事項，享受一切盡在掌握的成就感。", type: 'A' }, { text: "跟閨密約好 dress code，在最熱門的打卡點，捕捉彼此最上鏡的瞬間。", type: 'B' }, { text: "為了不錯過偶像的每個表情，就算位置再遠，也要記錄下最珍貴的舞台瞬間。", type: 'C' }, { text: "一趟說走就走的城市漫遊，隨性鑽進陌生巷弄，享受無障礙探索的樂趣。", type: 'D' } ] },
-            { question: "當你規劃一場旅行時，你更偏好像…", options: [ { text: "行程表塞滿，公事和玩樂無縫切換，每一分鐘都要淋漓盡致。", type: 'A' }, { text: "精心規劃每一天的穿搭，因為旅途中的每個角落，都是我的伸展台。", type: 'B' }, { text: "把大部分預算都花在「體驗」上，例如演唱會 VIP 區或國家公園的特殊導覽。", type: 'C' }, { text: "只訂好大方向的目的地，剩下的就隨意逛逛，喜歡就多待一會，累了就找地方休息。", type: 'D' } ] },
-            { question: "在社群媒體上，你最傾向分享哪種內容？", options: [ { text: "富有洞見的產業趨勢分析，或是能展現專業形象的內容。", type: 'A' }, { text: "精心調色過的生活美學照片，每一張都代表著我的個人品味。", type: 'B' }, { text: "一張千載難逢的奇景照，例如稍縱即逝的流星雨或野生動物。", type: 'C' }, { text: "各種實用資訊或讓生活更便利的聰明小技巧。", type: 'D' } ] },
-            { question: "選購一件新的科技產品時，哪個特點最讓你心動？", options: [ { text: "能徹底顛覆我的工作流程，提供前所未有的生產力。", type: 'A' }, { text: "設計是否獨特、時尚，能否成為我個人風格的延伸。", type: 'B' }, { text: "是否擁有最頂級的專業性能，能滿足我對完美的偏執。", type: 'C' }, { text: "能否無縫融入我的生活，讓一切都變得更聰明、更簡單。", type: 'D' } ] },
-            { question: "如果可以用一種方式形容你的生活哲學，那會是？", options: [ { text: "「時間就是金錢」—— 我總是在思考如何最大化每一分鐘的價值。", type: 'A' }, { text: "「生活要有儀式感」—— 我享受在平凡日常中創造屬於自己的閃亮時刻。", type: 'B' }, { text: "「追求極致，近乎偏執」—— 對於我熱愛的事物，99分都不能算是及格。", type: 'C' }, { text: "「聰明工作，而不是辛苦工作」—— 我總能找到最高效省力的方法解決問題。", type: 'D' } ] }
+            { question: "一個完美的週末午後，你會選擇如何度過？", options: [ { text: "找一間安靜、有質感的咖啡廳，戴上耳機，放鬆地享受獨處的效率時光。", type: 'A' }, { text: "約好姊妹們去新開的下午茶店，從餐點、擺盤到我們的穿搭，每個角度都要拍出最可愛的限時動態！", type: 'B' }, { text: "為了不錯過偶像的每個表情，就算位置再遠，也要記錄下最珍貴的舞台瞬間。", type: 'C' }, { text: "不去人擠人的地方，選個常去的公園或小店，買杯喜歡的飲料，安靜地放空一下午。", type: 'D' } ] },
+            { question: "當你規劃一場旅行時，你更偏好像…", options: [ { text: "我不喜歡把行程塞滿，但會事先查好幾家口袋名單，確保旅途既有彈性，又不失品質與舒適度。", type: 'A' }, { text: "行程不重要，重要的是每個景點都要能拍出夢幻美照，我的行李箱一半都是化妝品和可愛的配件。", type: 'B' }, { text: "把大部分預算都花在「體驗」上，例如演唱會 VIP 區或國家公園的特殊導覽。", type: 'C' }, { text: "完全不想規劃，我享受旅途中充滿未知的驚喜，迷路也是一種風景。", type: 'D' } ] },
+            { question: "在社群媒體上，你最傾向分享哪種內容？", options: [ { text: "我很少發文，但一出手，必定是經過深思熟慮、能展現我獨特品味的精選內容。", type: 'A' }, { text: "分享我家毛小孩的可愛瞬間，或是剛剪好的出遊 VLOG，配上超萌的貼圖和音樂，分享快樂最重要！", type: 'B' }, { text: "一張千載難逢的奇景照，例如稍縱即逝的流星雨或野生動物。", type: 'C' }, { text: "分享一些實用的生活小知識，或是能讓朋友會心一笑的有趣內容。", type: 'D' } ] },
+            { question: "選購一件新的科技產品時，哪個特點最讓你心動？", options: [ { text: "它能成為我的創意夥伴，用 AI 快速生成草稿、整理靈感，並將我腦中混亂的想法，變成清晰可執行的計畫。", type: 'A' }, { text: "顏色和外型是第一優先！它必須像個精緻的配件，能輕鬆放進我的小廢包裡。", type: 'B' }, { text: "是否擁有最頂級的專業性能，能滿足我對完美的偏執。", type: 'C' }, { text: "不追求花俏的功能，但它必須極度可靠、操作順手，成為我生活中值得信賴的夥伴。", type: 'D' } ] },
+            { question: "如果可以用一種方式形容你的生活哲學，那會是？", options: [ { text: "「凡事豫則立，不豫則廢。」—— 我喜歡為未來做好準備，享受計畫帶來的安心感。", type: 'A' }, { text: "「讓自己開心，是每天最重要的事。」—— 我熱愛用漂亮的事物點綴生活，從不吝嗇寵愛自己。", type: 'B' }, { text: "「追求極致，近乎偏執」—— 對於我熱愛的事物，99分都不能算是及格。", type: 'C' }, { text: "「生活在於解決問題。」—— 我享受用聰明的方法，讓複雜的事情變得簡單。", type: 'D' } ] }
         ];
 
         const results = {
