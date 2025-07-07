@@ -101,7 +101,7 @@
         /* Desktop: Override for landscape screens */
         @media (min-width: 768px) and (orientation: landscape) {
             #start-button-container {
-                bottom: 10rem; /* MODIFIED: Moved button higher on desktop */
+                bottom: 10rem; 
             }
             #start-button {
                 max-width: 320px; 
@@ -156,6 +156,10 @@
 </head>
 <body class="relative">
     <canvas id="galaxy-background" class="galaxy-background"></canvas>
+    
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_797b549692.mp3?filename=stargazing-125324.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="quiz-app" class="w-full">
 
@@ -169,7 +173,8 @@
             </div>
         </div>
 
-        <div id="quiz-content-wrapper" class="hidden p-4">
+        <!-- MODIFIED: Changed justify-center to justify-start and added vertical padding to allow scrolling -->
+        <div id="quiz-content-wrapper" class="hidden min-h-screen flex flex-col items-center justify-start p-4 py-12">
             <div class="w-full max-w-xl mx-auto">
                 <div id="quiz-screen" style="display: none;">
                      <div class="bg-white rounded-3xl shadow-2xl shadow-indigo-100 p-6 md:p-8 min-h-[550px] flex flex-col">
@@ -214,7 +219,8 @@
                                     </div>
                                     <div class="text-center md:text-left flex-grow">
                                         <p class="font-semibold">憑此結果畫面，即可兌換：</p>
-                                        <p class="mt-1 text-3xl font-bold text-indigo-600 whitespace-nowrap">7-ELEVEN 現萃茶</p>
+                                        <!-- MODIFIED: Responsive font size to prevent line break -->
+                                        <p class="mt-1 text-2xl sm:text-3xl font-bold text-indigo-600 whitespace-nowrap">7-ELEVEN 現萃茶</p>
                                     </div>
                                 </div>
                                 <div class="mt-4 border-t border-dashed border-indigo-300 pt-4 text-xs md:text-sm text-slate-700 space-y-2">
@@ -273,6 +279,7 @@
         let isMuted = true;
         let soundsReady = false;
         let clickSound, revealSound, swooshSound;
+        const bgMusic = document.getElementById('bg-music');
 
         function setupSounds() {
             if (soundsReady) return;
@@ -300,7 +307,24 @@
             isMuted = !isMuted;
             soundOnIcon.classList.toggle('hidden', isMuted);
             soundOffIcon.classList.toggle('hidden', !isMuted);
-            playSound(clickSound, 'C5', '8n');
+            bgMusic.muted = isMuted;
+            
+            if (!isMuted && !soundsReady) {
+                if (Tone.context.state !== 'running') {
+                    Tone.context.resume().then(() => {
+                        setupSounds();
+                        playSound(clickSound, 'C5', '8n');
+                        bgMusic.play();
+                    });
+                }
+            } else {
+                playSound(clickSound, 'C5', '8n');
+                if (!isMuted) {
+                    bgMusic.play();
+                } else {
+                    bgMusic.pause();
+                }
+            }
         }
         
         document.body.addEventListener('click', () => {
@@ -435,6 +459,10 @@
 
         function startQuiz() {
             playSound(clickSound, 'C5', '8n');
+            // MODIFIED: Play background music if not muted
+            if (!isMuted) {
+                bgMusic.play();
+            }
             gtag('event', 'quiz_start', { 'event_category': 'engagement', 'event_label': 'galaxy_archetype_quiz' });
             currentQuestionIndex = 0;
             userAnswers = [];
@@ -578,6 +606,10 @@
 
         function restartQuiz() {
             playSound(clickSound, 'C5', '8n');
+            // MODIFIED: Play background music if not muted
+            if (!isMuted) {
+                bgMusic.play();
+            }
             resultScreen.style.display = 'none';
             quizContentWrapper.classList.add('hidden');
             startScreen.style.display = 'flex';
