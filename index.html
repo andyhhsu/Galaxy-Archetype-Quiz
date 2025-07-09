@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>心理測驗：解鎖你的 Galaxy 原型人格</title>
     
-    <!-- START: GA4 Global Site Tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-631RLVDD3T"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,8 +12,6 @@
       gtag('js', new Date());
       gtag('config', 'G-631RLVDD3T');
     </script>
-    <!-- END: GA4 Global Site Tag (gtag.js) -->
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +181,7 @@
                             <p id="result-title" class="text-xl font-bold mt-2 text-indigo-700"></p>
                         </div>
                         <div class="px-8 flex justify-center">
-                            <img id="result-image" src="" alt="手機圖片" class="w-auto h-60 md:h-64 object-contain drop-shadow-2xl -mb-4">
+                            <img id="result-image" src="" alt="手機圖片" class="w-auto h-60 md:h-64 object-contain drop-shadow-2xl -mb-4 mx-auto block">
                         </div>
                         <div class="bg-white/50 backdrop-blur-lg p-8 pt-12">
                             <p id="result-description" class="text-base text-gray-800 leading-relaxed text-center"></p>
@@ -192,7 +189,7 @@
                                 <h3 class="text-xl font-bold text-center text-indigo-800">🎁 已解鎖：專屬線下好禮</h3>
                                 <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
                                     <div class="flex-shrink-0">
-                                        <img src="https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/000001_1669964223-removebg-preview.png" alt="7-ELEVEN 現萃茶" class="w-36 h-36 md:w-48 md:h-48 object-contain">
+                                        <img src="https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/000001_1669964223-removebg-preview.png" alt="7-ELEVEN 現萃茶" class="w-60 h-60 md:w-48 md:h-48 object-contain">
                                     </div>
                                     <div class="text-center md:text-left flex-grow">
                                         <p class="font-semibold">憑此結果畫面，即可兌換：</p>
@@ -200,6 +197,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 border-t border-dashed border-indigo-300 pt-4 text-xs md:text-sm text-slate-700 space-y-2">
+                                    <!-- MODIFIED: Re-added the redemption location block -->
                                     <div class="flex">
                                         <span class="font-bold mr-2 flex-shrink-0">兌換地點:</span>
                                         <a href="https://www.google.com/maps/search/?api=1&query=微風南山三星旗艦體驗館" target="_blank" class="text-indigo-600 hover:underline flex items-center">
@@ -212,7 +210,7 @@
                                     </div>
                                     <div class="flex">
                                         <span class="font-bold mr-2 flex-shrink-0">兌換期限:</span>
-                                        <span>⚠️ 請於 2025/7/24 前兌換完畢</span>
+                                        <span>酷暑救星，限時登場！現萃茶只等你到7/31號！</span>
                                     </div>
                                 </div>
                             </div>
@@ -308,8 +306,8 @@
         ];
 
         const results = {
-            'A': { title: "Galaxy Fold7", prototype: "運籌帷幄的「開創者」", description: "你追求極致效率，是天生的多工處理大師。Galaxy Fold7 的沉浸式大螢幕與超薄機身，讓你隨時隨地都能展開強大生產力，完美契合你的商務精英本色。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic/A.png", bgClass: "result-bg-A" },
-            'B': { title: "Galaxy Flip7", prototype: "引領潮流的「風格家」", description: "你是自帶光芒的時尚焦點，對美感有著敏銳直覺。Galaxy Flip7 的精巧設計與強大封面螢幕，讓你無需展開手機即可快速自拍，輕鬆定義屬於你的獨特風格。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/pic/B.png", bgClass: "result-bg-B" },
+            'A': { title: "Galaxy Fold7", prototype: "運籌帷幄的「開創者」", description: "你追求極致效率，是天生的多工處理大師。Galaxy Fold7 的沉浸式大螢幕與超薄機身，讓你隨時隨地都能展開強大生產力，完美契合你的商務精英本色。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/Z%20Fold7.png?raw=true", bgClass: "result-bg-A" },
+            'B': { title: "Galaxy Flip7", prototype: "引領潮流的「風格家」", description: "你是自帶光芒的時尚焦點，對美感有著敏銳直覺。Galaxy Flip7 的精巧設計與強大封面螢幕，讓你無需展開手機即可快速自拍，輕鬆定義屬於你的獨特風格。", image: "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/Z%20Flip7.png?raw=true", bgClass: "result-bg-B" },
             'C': { title: "Galaxy S25 Ultra", prototype: "追求極致的「創造家」", description: "你對細節有著近乎偏執的追求，渴望捕捉每個不容錯過的瞬間。Galaxy S25 Ultra 是你的演唱會神器，憑藉其無可匹敵的超強遠拍功能，再遠的舞台都是你的搖滾區。", image: "https://images.samsung.com/is/image/samsung/p6pim/tw/2501/gallery/tw-galaxy-s25-s938-sm-s9380zbgbri-544716746?imbypass=true", bgClass: "result-bg-C" },
             'D': { title: "Galaxy S25 Edge", prototype: "聰明生活的「全能者」", description: "你務實、聰明且懂得平衡，總能找到最高效的生活方式。Galaxy S25 Edge 的輕巧機身與全方位 AI 功能，是你探索生活的最佳夥伴，讓一切都變得輕鬆又簡單。", image: "https://images.samsung.com/is/image/samsung/p6pim/tw/ps_2504/gallery/tw-galaxy-s25-s937-sm-s9370zsgbri-546491968?imbypass=true", bgClass: "result-bg-D" }
         };
