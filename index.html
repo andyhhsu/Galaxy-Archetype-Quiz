@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>解鎖你的 Galaxy 原型人格</title>
+    <title>心理測驗：解鎖你的 Galaxy 原型人格</title>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-631RLVDD3T"></script>
     <script>
@@ -197,7 +197,6 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 border-t border-dashed border-indigo-300 pt-4 text-xs md:text-sm text-slate-700 space-y-2">
-                                    <!-- MODIFIED: Re-added the redemption location block -->
                                     <div class="flex">
                                         <span class="font-bold mr-2 flex-shrink-0">兌換地點:</span>
                                         <a href="https://www.google.com/maps/search/?api=1&query=微風南山三星旗艦體驗館" target="_blank" class="text-indigo-600 hover:underline flex items-center">
@@ -215,6 +214,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- NEW: Pre-order Promotion Block -->
+                    <div id="preorder-promo-container" class="mt-6" style="display: none;">
+                        <a id="preorder-link" href="" target="_blank">
+                            <img id="preorder-image" src="" alt="新機預購優惠" class="w-full h-auto rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
+                        </a>
                     </div>
 
                     <div class="mt-6 text-center">
@@ -489,6 +495,24 @@
                 resultPrototypeEl.classList.add('text-white');
                 resultTitleEl.classList.remove('text-indigo-700');
                 resultTitleEl.classList.add('text-indigo-300');
+            }
+
+            // --- Pre-order Promo Logic ---
+            const promoContainer = document.getElementById('preorder-promo-container');
+            const promoLink = document.getElementById('preorder-link');
+            const promoImage = document.getElementById('preorder-image');
+
+            const promoImageUrl = "https://raw.githubusercontent.com/andyhhsu/Galaxy-Archetype-Quiz/main/Z7perorder.png";
+            const preorderUrl = "https://2025-galaxy2h-preorder.twsamsungcampaign.com/step1.aspx?cid=tw_pd_ppc_google-ads_multiple_pre-order_2025-ses-q3-pr-pmax_search-performance-max_q3-pr-pmax_none_lo_2nd-Party-Targeting_conversion_google-customer-match&utm_source=google-ads&utm_medium=shopping-pmax&utm_campaign=2025-ses-q3-pr-pmax&utm_term=Hot&utm_content=none&gad_source=1&gad_campaignid=22779434777&gbraid=0AAAAADGLGRzeSF1g4UGweVlJuKBKFhlVo&gclid=Cj0KCQjwj8jDBhD1ARIsACRV2TvDRKfRUBvK8Wg1tHrw6ZtZzzEp99b8dXQBhHRoPbzf2B9Dpnk3E0caAsuAEALw_wcB";
+
+            promoLink.href = preorderUrl;
+
+            if (type === 'A' || type === 'B') {
+                promoImage.src = promoImageUrl;
+                promoImage.alt = "Galaxy Z 系列新機預購優惠";
+                promoContainer.style.display = 'block';
+            } else {
+                promoContainer.style.display = 'none';
             }
 
             quizScreen.style.display = 'none';
